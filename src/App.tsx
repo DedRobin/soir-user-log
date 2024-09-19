@@ -6,7 +6,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main>
+      <main className="grow">
         <Outlet />
       </main>
       <Footer />
