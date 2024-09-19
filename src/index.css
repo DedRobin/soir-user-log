@@ -74,8 +74,4 @@ button:focus-visible {
 #root {
   min-width: 100vw;
   min-height: 100vh;
-
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  place-items: center;
 }
