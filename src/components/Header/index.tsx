@@ -1,3 +1,9 @@
+import Nav from './Nav';
+
 export default function Header() {
-  return <header>Header</header>;
+  return (
+    <header className="flex justify-between">
+      <Nav />
+    </header>
+  );
 }
