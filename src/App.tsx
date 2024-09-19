@@ -1,12 +1,6 @@
-import Test from '@components/Test';
+import { RouterProvider } from 'react-router-dom';
+import router from './lib/react-router/router';
 
 export default function App() {
-  return (
-    <>
-      <div className="text-5xl col-span-full">
-        <div>App</div>
-        <Test />
-      </div>
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
