@@ -17,7 +17,7 @@ export default function App() {
   return (
     <>
       <Header />
-      <main className="grow">
+      <main className="flex flex-col justify-center items-center grow">
         <Outlet />
       </main>
       <Footer />
