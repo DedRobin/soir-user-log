@@ -1,4 +1,4 @@
-import App from '@/App';
+import App from '@/app/App';
 import Main from '@/pages/Main';
 import Visitors from '@/pages/Visitors';
 import { createBrowserRouter } from 'react-router-dom';
