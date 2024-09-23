@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 interface LinkButtonProps extends PropsWithChildren {
   to: string;
@@ -7,11 +7,16 @@ interface LinkButtonProps extends PropsWithChildren {
 
 export default function LinkButton({ to, children }: LinkButtonProps) {
   return (
-    <Link
-      className="block bg-black py-2 px-5 border border-black hover:border-white transition-colors duration-300"
+    <NavLink
+      className={({ isActive }) =>
+        [
+          isActive ? 'bg-zinc-800 text-white' : '',
+          'block bg-black py-2 px-5 hover:text-white hover:bg-zinc-800 transition-colors duration-300',
+        ].join(' ')
+      }
       to={to}
     >
       {children}
-    </Link>
+    </NavLink>
   );
 }
