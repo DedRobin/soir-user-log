@@ -16,7 +16,7 @@ export default function App() {
   return (
     <>
       <SideBar />
-      <div className="flex flex-col justify-center items-center grow">
+      <div className="flex flex-col justify-center grow">
         <Outlet />
       </div>
     </>
