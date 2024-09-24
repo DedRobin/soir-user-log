@@ -1,3 +1,4 @@
+import Form from '@/components/UI/Form';
 import LSKey from '@/hooks/keys';
 import { useLocalStorage } from '@/hooks/localStorage';
 import { Path } from '@/lib/react-router/router';
@@ -10,5 +11,9 @@ export default function Visitors() {
     setLastVisitedPath(Path.Visitors);
   }, [setLastVisitedPath]);
 
-  return <div>Посетители</div>;
+  return (
+    <>
+      <Form />
+    </>
+  );
 }
