@@ -11,8 +11,10 @@ export default function VisitorForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<VisitorFormInput>();
+
   const submitForm: SubmitHandler<VisitorFormInput> = (data) => {
     alert([data.fullname, data.car]);
   };
@@ -26,6 +28,7 @@ export default function VisitorForm() {
         label="Ф.И.О."
         type="text"
         error={errors.fullname}
+        autoFocus={true}
       />
       <Field
         id="car"
@@ -34,7 +37,7 @@ export default function VisitorForm() {
         type="text"
         error={errors.car}
       />
-      <ButtonGroup />
+      <ButtonGroup clearForm={() => reset()} />
     </form>
   );
 }

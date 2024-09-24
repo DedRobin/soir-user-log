@@ -7,6 +7,7 @@ export interface FieldProps {
   label: string;
   type: HTMLInputTypeAttribute;
   error: FieldError | undefined;
+  autoFocus?: boolean;
 }
 
 export default function Field({
@@ -15,11 +16,17 @@ export default function Field({
   label,
   type,
   error,
+  autoFocus,
 }: FieldProps) {
   return (
     <div className="field flex justify-between items-center gap-2 relative">
       <label htmlFor={id}>{label}</label>
-      <input className="rounded p-2 basis-2/3" type={type} {...register} />
+      <input
+        className="rounded p-2 basis-2/3"
+        type={type}
+        {...register}
+        autoFocus={autoFocus}
+      />
       {error && (
         <span className="absolute right-0 px-2 text-red-500">
           Введите текст
