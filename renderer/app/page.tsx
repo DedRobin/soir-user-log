@@ -1,3 +1,5 @@
-export default async function HomePage() {
-  return <div>Hello world!</div>;
+import Root from './client';
+
+export default async function RootPage() {
+  return <Root />;
 }
