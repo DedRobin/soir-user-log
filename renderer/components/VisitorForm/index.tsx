@@ -1,6 +1,7 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Field from './Field';
 import ButtonGroup from './ButtonGroup';
+import { readSheet } from '@/app/actions';
 
 interface VisitorFormInput {
   fullname: string;
@@ -16,7 +17,8 @@ export default function VisitorForm() {
   } = useForm<VisitorFormInput>();
 
   const submitForm: SubmitHandler<VisitorFormInput> = (data) => {
-    alert([data.fullname, data.car]);
+    // alert([data.fullname, data.car]);
+    readSheet();
   };
 
   return (
