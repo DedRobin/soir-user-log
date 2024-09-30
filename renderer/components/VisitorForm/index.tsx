@@ -1,9 +1,9 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Field from './Field';
 import ButtonGroup from './ButtonGroup';
-import { readSheet } from '@/app/actions';
+import { writeDataToXLSX } from '@/app/actions';
 
-interface VisitorFormInput {
+export interface VisitorFormInput {
   fullname: string;
   car: string;
 }
@@ -17,8 +17,8 @@ export default function VisitorForm() {
   } = useForm<VisitorFormInput>();
 
   const submitForm: SubmitHandler<VisitorFormInput> = (data) => {
-    // alert([data.fullname, data.car]);
-    readSheet();
+    const arrayData = Object.values(data);
+    writeDataToXLSX(arrayData);
   };
 
   return (

@@ -2,30 +2,32 @@
 import * as XLSX from 'xlsx';
 import * as fs from 'fs';
 import { Readable } from 'stream';
+import { getFormattedDate } from '@/date';
 
 XLSX.set_fs(fs);
 XLSX.stream.set_readable(Readable);
 
-export async function readSheet() {
-  const path = process.cwd() + '\\';
+export async function writeDataToXLSX(data: string[]) {
+  const date = getFormattedDate();
+  const row = [date, ...data];
+
+  const filename = 'test';
+  const path = `${process.cwd()}\\.log\\${filename}.xlsx`;
+
   try {
-    const wb = XLSX.readFile(path + '.log\\test.xlsx');
-    console.log(wb.Sheets['MyData'])
-    const rows = [{ name: 'Foo', birthday: 'bar' }];
-    const ws = XLSX.utils.json_to_sheet(rows);
-    XLSX.utils.book_append_sheet(wb, ws, 'MyData');
-    XLSX.writeFile(wb, path + '.log\\test.xlsx');
+    const wb = XLSX.readFile(path);
+    const ws = wb.Sheets['Data'];
+    XLSX.utils.sheet_add_aoa(ws, [row], { origin: -1 });
+    XLSX.writeFile(wb, path);
+
     console.log('TRY');
   } catch (error) {
     console.error(error);
     const wb = XLSX.utils.book_new();
-    const rows = [
-      { name: 'George Washington', birthday: '1732-02-22' },
-      { name: 'John Adams', birthday: '1735-10-19' },
-    ];
-    const ws = XLSX.utils.json_to_sheet(rows);
-    XLSX.utils.book_append_sheet(wb, ws, 'Dates');
-    XLSX.writeFile(wb, path + '.log\\Presidents.xlsx');
+    const headers = ['Дата', 'Ф.И.О.', 'Номер автомобиля'];
+    const ws = XLSX.utils.aoa_to_sheet([headers, row]);
+    XLSX.utils.book_append_sheet(wb, ws, 'Data');
+    XLSX.writeFile(wb, path);
 
     console.log('CATCH');
   }
