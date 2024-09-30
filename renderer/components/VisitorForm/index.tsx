@@ -27,7 +27,7 @@ export default function VisitorForm() {
 
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit(submitForm)}>
-      <h2 className="text-3xl">Посетители</h2>
+      <h2 className="text-3xl text-center py-5">Добавить посетителя</h2>
       <Field
         id="fullname"
         register={register('fullname', { required: true })}
