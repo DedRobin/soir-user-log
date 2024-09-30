@@ -12,7 +12,7 @@ export default function ButtonGroup({
         type="button"
         onClick={clearForm}
       >
-        Очистить форму
+        Очистить
       </button>
       <button className="submit-button" type="submit">
         Добавить

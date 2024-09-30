@@ -3,10 +3,14 @@ import Field from './Field';
 import ButtonGroup from './ButtonGroup';
 import { writeDataToXLSX } from '@/app/actions';
 
-export interface VisitorFormInput {
-  fullname: string;
-  car: string;
-}
+export const fieldNames = {
+  fullname: 'Ф.И.О.',
+  company: 'Организация',
+  purpose: 'Цель визита',
+  car: 'Автотранспорт (марка, номер)',
+};
+
+export type VisitorFormInput = typeof fieldNames;
 
 export default function VisitorForm() {
   const {
@@ -27,15 +31,29 @@ export default function VisitorForm() {
       <Field
         id="fullname"
         register={register('fullname', { required: true })}
-        label="Ф.И.О."
+        label={fieldNames.fullname}
         type="text"
         error={errors.fullname}
         autoFocus={true}
       />
       <Field
+        id="company"
+        register={register('company')}
+        label={fieldNames.company}
+        type="text"
+        error={errors.company}
+      />
+      <Field
+        id="purpose"
+        register={register('purpose')}
+        label={fieldNames.purpose}
+        type="textarea"
+        error={errors.purpose}
+      />
+      <Field
         id="car"
-        register={register('car', { required: true })}
-        label="Номер автомобиль"
+        register={register('car')}
+        label={fieldNames.car}
         type="text"
         error={errors.car}
       />
