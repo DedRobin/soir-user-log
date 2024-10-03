@@ -1,7 +1,7 @@
 import App from '@/app/App';
 import Main from '@/pages/Main';
 import Visitors from '@/pages/Visitors';
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 
 export enum Path {
   App = '/',
@@ -9,7 +9,7 @@ export enum Path {
   Visitors = '/visitors',
 }
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: Path.App,
     element: <App />,

@@ -7,16 +7,28 @@ interface VisitorFormInput {
   car: string;
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export default function VisitorForm() {
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<VisitorFormInput>();
 
-  const submitForm: SubmitHandler<VisitorFormInput> = (data) => {
-    alert([data.fullname, data.car]);
+  const submitForm: SubmitHandler<VisitorFormInput> = async () => {
+    // alert([data.fullname, data.car]);
+    await fetch('http://127.0.0.1:3000/')
+      .then((res) => res.json())
+      .then(async (data) => {
+        await sleep(2000);
+        return data;
+      })
+      .then((data) => alert(JSON.stringify(data)))
+      .catch((error) => console.error(error));
   };
 
   return (
@@ -37,7 +49,7 @@ export default function VisitorForm() {
         type="text"
         error={errors.car}
       />
-      <ButtonGroup clearForm={() => reset()} />
+      <ButtonGroup clearForm={() => reset()} isSubmitting={isSubmitting} />
     </form>
   );
 }
