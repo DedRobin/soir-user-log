@@ -20,9 +20,9 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "paths": {
-      "@/*": ["./src/*"],
-      "@components/*": ["./src/components/*"],
-      "@lib/*": ["./src/lib/*"]
+      "@/*": ["./src/client/*"],
+      "@components/*": ["./src/client/components/*"],
+      "@lib/*": ["./src/client/lib/*"]
     }
   },
   "include": ["src", "electron"],
