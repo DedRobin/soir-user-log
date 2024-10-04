@@ -1,14 +1,11 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import Field from './Field';
 import ButtonGroup from './ButtonGroup';
+import { sendRequest } from '@/lib/http/requests';
 
-interface VisitorFormInput {
+export interface VisitorFormInput {
   fullname: string;
   car: string;
-}
-
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 export default function VisitorForm() {
@@ -19,16 +16,18 @@ export default function VisitorForm() {
     formState: { errors, isSubmitting },
   } = useForm<VisitorFormInput>();
 
-  const submitForm: SubmitHandler<VisitorFormInput> = async () => {
-    // alert([data.fullname, data.car]);
-    await fetch('http://127.0.0.1:3000/')
-      .then((res) => res.json())
-      .then(async (data) => {
-        await sleep(2000);
-        return data;
-      })
-      .then((data) => alert(JSON.stringify(data)))
-      .catch((error) => console.error(error));
+  const submitForm: SubmitHandler<VisitorFormInput> = async (formData) => {
+    const url = import.meta.env.VITE_SERVER_URL;
+    const method = 'POST';
+    if (!url) {
+      alert('No URL');
+      throw new Error('No URL');
+    }
+    const response = await sendRequest(url, method, formData);
+    if (response.status === 200) {
+      const data = await response.json();
+      alert(data);
+    }
   };
 
   return (
