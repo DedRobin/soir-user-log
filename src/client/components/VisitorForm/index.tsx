@@ -1,11 +1,23 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
-import Field from './Field';
 import ButtonGroup from './ButtonGroup';
 import { sendRequest } from '@/lib/http/requests';
+import DateField from './Fields/DateField';
+import FullnameField from './Fields/FullnameField';
+import CarField from './Fields/CarField';
+import PurposeField from './Fields/PurposeField';
+import CompanyField from './Fields/CompanyField';
+import AccompanyingField from './Fields/AccompanyingField';
+import AgreedWithField from './Fields/AgreedWithField';
 
 export interface VisitorFormInput {
   fullname: string;
   car: string;
+  purpose: string;
+  company: string;
+  accompanying: string;
+  agreedWith: string;
+  dateFrom: string;
+  dateTo: string;
 }
 
 export default function VisitorForm() {
@@ -26,28 +38,20 @@ export default function VisitorForm() {
     const response = await sendRequest(url, method, formData);
     if (response.status === 200) {
       const data = await response.json();
-      alert(data);
+      alert(JSON.stringify(JSON.parse(data), null, 2));
     }
   };
 
   return (
     <form className="flex flex-col gap-2" onSubmit={handleSubmit(submitForm)}>
-      <h2 className="text-3xl">Посетители</h2>
-      <Field
-        id="fullname"
-        register={register('fullname', { required: true })}
-        label="Ф.И.О."
-        type="text"
-        error={errors.fullname}
-        autoFocus={true}
-      />
-      <Field
-        id="car"
-        register={register('car', { required: true })}
-        label="Номер автомобиль"
-        type="text"
-        error={errors.car}
-      />
+      <h2 className="text-3xl text-center my-5">Посетитель</h2>
+      <FullnameField register={register} errors={errors} />
+      <CarField register={register} errors={errors} />
+      <PurposeField register={register} errors={errors} />
+      <CompanyField register={register} errors={errors} />
+      <AccompanyingField register={register} errors={errors} />
+      <AgreedWithField register={register} errors={errors} />
+      <DateField register={register} errors={errors} />
       <ButtonGroup clearForm={() => reset()} isSubmitting={isSubmitting} />
     </form>
   );
