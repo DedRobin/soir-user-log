@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { HTMLInputTypeAttribute } from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
@@ -25,23 +26,24 @@ export default function Field({
       <label htmlFor={id}>{label}</label>
       {type === 'textarea' ? (
         <textarea
-          className="rounded p-2 basis-2/3"
+          className={clsx(
+            'rounded p-2 basis-2/3',
+            error && 'outline outline-2 outline-red-500'
+          )}
           {...register}
           autoFocus={autoFocus}
         />
       ) : (
         <input
-          className="rounded p-2 basis-2/3"
+          className={clsx(
+            'rounded p-2 basis-2/3',
+            error && 'outline outline-2 outline-red-500'
+          )}
           type={type}
           {...register}
           autoFocus={autoFocus}
           defaultValue={defaultValue}
         />
-      )}
-      {error && (
-        <span className="absolute right-0 px-2 text-red-500">
-          Введите текст
-        </span>
       )}
     </div>
   );
