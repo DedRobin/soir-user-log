@@ -9,8 +9,8 @@ export default function AgreedWithField({
     <Field
       id="purpose"
       register={register('purpose')}
-      label="Цель визита"
-      type="textarea"
+      label="Согласовано с"
+      type="text"
       error={errors.purpose}
     />
   );

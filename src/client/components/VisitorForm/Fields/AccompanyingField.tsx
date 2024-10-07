@@ -9,7 +9,7 @@ export default function AccompanyingField({
     <Field
       id="agreedWith"
       register={register('agreedWith')}
-      label="Согласовано с"
+      label="Совпровождающий"
       type="text"
       error={errors.agreedWith}
     />

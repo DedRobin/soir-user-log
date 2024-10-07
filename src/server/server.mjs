@@ -1,7 +1,11 @@
 import { createServer } from 'node:http';
+import { appendRowToBook, createBook } from './actions.mjs';
+import { getFormattedDate } from './services.mjs';
 
 const hostname = '127.0.0.1';
 const port = 3000;
+const filename = 'visitors';
+const path = `${process.cwd()}\\${filename}.xlsx`;
 
 const requestListener = (request, response) => {
   response.setHeader('Content-Type', 'application/json');
@@ -18,6 +22,14 @@ const requestListener = (request, response) => {
       chunks.push(chunk);
     });
     request.on('end', () => {
+      const data = JSON.parse(chunks.join(''));
+      const date = getFormattedDate();
+      const row = [date, ...Object.values(data)];
+      try {
+        appendRowToBook(row, path);
+      } catch {
+        createBook(row, path);
+      }
       response.end(JSON.stringify(chunks.join('')));
     });
   } else {
