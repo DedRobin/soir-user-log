@@ -8,6 +8,7 @@ import PurposeField from './Fields/PurposeField';
 import CompanyField from './Fields/CompanyField';
 import AccompanyingField from './Fields/AccompanyingField';
 import AgreedWithField from './Fields/AgreedWithField';
+import { toast as notify } from 'react-toastify';
 
 export interface VisitorFormInput {
   fullname: string;
@@ -38,7 +39,7 @@ export default function VisitorForm() {
     const response = await sendRequest(url, method, formData);
     if (response.status === 200) {
       const msg = await response.text();
-      alert(msg);
+      notify.success(msg);
     }
   };
 

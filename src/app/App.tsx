@@ -4,6 +4,7 @@ import { navigateTo } from './services';
 import LSKey from '../hooks/keys';
 import { useLocalStorage } from '../hooks/localStorage';
 import SideBar from '../components/SideBar';
+import ToastProvider from '@/lib/react-toastify/provider';
 
 export default function App() {
   const navigate = useNavigate();
@@ -14,11 +15,11 @@ export default function App() {
   }, [lastVisitedPath, navigate]);
 
   return (
-    <>
+    <ToastProvider>
       <SideBar />
       <div className="flex flex-col justify-center grow">
         <Outlet />
       </div>
-    </>
+    </ToastProvider>
   );
 }
