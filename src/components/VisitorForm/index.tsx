@@ -36,10 +36,23 @@ export default function VisitorForm() {
       alert('No URL');
       throw new Error('No URL');
     }
-    const response = await sendRequest(url, method, formData);
-    if (response.status === 200) {
-      const msg = await response.text();
-      notify.success(msg);
+    try {
+      const response = await sendRequest(url, method, formData);
+      const { status } = response;
+
+      switch (status) {
+        case 200:
+          {
+            const msg = await response.text();
+            notify.success(msg);
+          }
+          break;
+        default:
+          notify.warning(`\nStatus code = ${status}\nЧто-то пошло не так.`);
+      }
+    } catch (error) {
+      notify.error('Нет связи с сервером.');
+      console.error(error);
     }
   };
 
