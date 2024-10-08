@@ -1,4 +1,4 @@
-import { VisitorFormInput } from '@/components/VisitorForm';
+import { VisitorFormInput } from '../../components/VisitorForm';
 
 export async function sendRequest(
   url: string,

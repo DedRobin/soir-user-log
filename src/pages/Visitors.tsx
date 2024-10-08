@@ -1,7 +1,7 @@
-import VisitorForm from '@/components/VisitorForm';
-import LSKey from '@/hooks/keys';
-import { useLocalStorage } from '@/hooks/localStorage';
-import { Path } from '@/lib/react-router/router';
+import VisitorForm from '../components/VisitorForm';
+import LSKey from '../hooks/keys';
+import { useLocalStorage } from '../hooks/localStorage';
+import { Path } from '../lib/react-router/router';
 import { useEffect } from 'react';
 
 export default function Visitors() {

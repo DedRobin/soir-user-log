@@ -1,5 +1,5 @@
-import LinkButton from '@/components/UI/LinkButton';
-import { Path } from '@/lib/react-router/router';
+import LinkButton from '../../UI/LinkButton';
+import { Path } from '../../../lib/react-router/router';
 
 export default function SideMenu() {
   return (

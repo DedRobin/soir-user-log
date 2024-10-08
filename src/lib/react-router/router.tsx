@@ -1,6 +1,6 @@
-import App from '@/app/App';
-import Main from '@/pages/Main';
-import Visitors from '@/pages/Visitors';
+import App from '../../app/App';
+import Main from '../../pages/Main';
+import Visitors from '../../pages/Visitors';
 import { createHashRouter } from 'react-router-dom';
 
 export enum Path {

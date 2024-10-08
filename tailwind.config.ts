@@ -2,11 +2,11 @@
 
 export default {
   content: [
-    './src/client/app/**/*.{html,js,ts,jsx,tsx}',
-    './src/client/pages/**/*.{html,js,ts,jsx,tsx}',
-    './src/client/components/**/*.{html,js,ts,jsx,tsx}',
-    './src/client/main.tsx',
-    './src/client/index.html',
+    './src/app/**/*.{html,js,ts,jsx,tsx}',
+    './src/pages/**/*.{html,js,ts,jsx,tsx}',
+    './src/components/**/*.{html,js,ts,jsx,tsx}',
+    './src/index.html',
+    './src/main.tsx',
   ],
   theme: {
     extend: {},

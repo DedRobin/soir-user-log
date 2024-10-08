@@ -1,4 +1,4 @@
-import { Path } from '@/lib/react-router/router';
+import { Path } from '../lib/react-router/router';
 import { NavigateOptions, To } from 'react-router-dom';
 
 export function navigateTo(

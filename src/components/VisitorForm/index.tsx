@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from 'react-hook-form';
 import ButtonGroup from './ButtonGroup';
-import { sendRequest } from '@/lib/http/requests';
+import { sendRequest } from '../../lib/http/requests';
 import DateField from './Fields/DateField';
 import FullnameField from './Fields/FullnameField';
 import CarField from './Fields/CarField';
