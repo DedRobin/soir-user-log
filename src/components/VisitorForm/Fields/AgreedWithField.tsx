@@ -7,11 +7,11 @@ export default function AgreedWithField({
 }: CustomFieldProps) {
   return (
     <Field
-      id="purpose"
-      register={register('purpose')}
+      id="agreedWith"
+      register={register('agreedWith')}
       label="Согласовано с"
       type="text"
-      error={errors.purpose}
+      error={errors.agreedWith}
     />
   );
 }

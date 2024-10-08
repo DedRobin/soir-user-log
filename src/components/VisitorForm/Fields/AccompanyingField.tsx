@@ -7,11 +7,11 @@ export default function AccompanyingField({
 }: CustomFieldProps) {
   return (
     <Field
-      id="agreedWith"
-      register={register('agreedWith')}
+      id="accompanying"
+      register={register('accompanying')}
       label="Совпровождающий"
       type="text"
-      error={errors.agreedWith}
+      error={errors.accompanying}
     />
   );
 }
