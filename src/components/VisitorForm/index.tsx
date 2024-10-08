@@ -37,8 +37,8 @@ export default function VisitorForm() {
     }
     const response = await sendRequest(url, method, formData);
     if (response.status === 200) {
-      const data = await response.json();
-      alert(JSON.stringify(JSON.parse(data), null, 2));
+      const msg = await response.text();
+      alert(msg);
     }
   };
 
