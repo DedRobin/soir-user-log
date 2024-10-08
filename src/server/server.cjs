@@ -1,6 +1,9 @@
-import { createServer } from 'node:http';
-import { appendRowToBook, createBook } from './actions.mjs';
-import { getFormattedDate } from './services.mjs';
+// import { createServer } from 'node:http';
+// import { appendRowToBook, createBook } from './actions.cjs';
+// import { getFormattedDate } from './services.mjs';
+const { createServer } = require('node:http');
+const { appendRowToBook, createBook } = require('./actions.cjs');
+const { getFormattedDate } = require('./services.cjs');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -27,7 +30,8 @@ const requestListener = (request, response) => {
       const row = [date, ...Object.values(data)];
       try {
         appendRowToBook(row, path);
-      } catch {
+      } catch (e) {
+        console.log(e);
         createBook(row, path);
       }
       response.end(JSON.stringify(chunks.join('')));

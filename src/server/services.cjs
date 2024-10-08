@@ -1,4 +1,4 @@
-export function getFormattedDate() {
+function getFormattedDate() {
   const currentDate = new Date();
   const date = currentDate.getDate().toString().padStart(2, '0');
   const month = currentDate.getMonth().toString().padStart(2, '0');
@@ -7,3 +7,5 @@ export function getFormattedDate() {
 
   return formattedDate;
 }
+
+module.exports = { getFormattedDate };
