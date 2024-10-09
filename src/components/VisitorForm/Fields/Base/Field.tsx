@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { HTMLInputTypeAttribute } from 'react';
+import { FormEventHandler, HTMLInputTypeAttribute } from 'react';
 import { FieldError, UseFormRegisterReturn } from 'react-hook-form';
 
 export interface FieldProps {
@@ -9,7 +9,9 @@ export interface FieldProps {
   type: HTMLInputTypeAttribute | 'textarea';
   error: FieldError | undefined;
   autoFocus?: boolean;
+  value?: string;
   defaultValue?: string;
+  onInput?: FormEventHandler<HTMLInputElement | HTMLTextAreaElement>;
 }
 
 export default function Field({
@@ -19,7 +21,9 @@ export default function Field({
   type,
   error,
   autoFocus,
+  value,
   defaultValue,
+  onInput,
 }: FieldProps) {
   return (
     <div className="field flex justify-between items-center gap-2 relative">
@@ -32,6 +36,9 @@ export default function Field({
           )}
           {...register}
           autoFocus={autoFocus}
+          value={value}
+          defaultValue={defaultValue}
+          onInput={onInput}
         />
       ) : (
         <input
@@ -42,7 +49,9 @@ export default function Field({
           type={type}
           {...register}
           autoFocus={autoFocus}
+          value={value}
           defaultValue={defaultValue}
+          onInput={onInput}
         />
       )}
     </div>
