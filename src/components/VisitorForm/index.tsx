@@ -9,6 +9,7 @@ import CompanyField from './Fields/CompanyField';
 import AccompanyingField from './Fields/AccompanyingField';
 import AgreedWithField from './Fields/AgreedWithField';
 import { toast as notify } from 'react-toastify';
+import Endpoint from '@/lib/http/endpoints';
 
 export interface VisitorFormInput {
   fullname: string;
@@ -30,14 +31,10 @@ export default function VisitorForm() {
   } = useForm<VisitorFormInput>();
 
   const submitForm: SubmitHandler<VisitorFormInput> = async (formData) => {
-    const url = import.meta.env.VITE_SERVER_URL;
     const method = 'POST';
-    if (!url) {
-      alert('No URL');
-      throw new Error('No URL');
-    }
+
     try {
-      const response = await sendRequest(url, method, formData);
+      const response = await sendRequest(Endpoint.AddVisitor, method, formData);
       const { status } = response;
 
       switch (status) {
